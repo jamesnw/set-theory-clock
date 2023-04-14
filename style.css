@@ -1,0 +1,77 @@
+:root {
+  --space: 0;
+  --theme-color-light: #e2e3e7;
+  --theme-color-dark: #343538;
+}
+body {
+  height: 100svh;
+  width: 100vw;
+  margin: 0;
+  background: var(--theme-color-dark);
+}
+@media (prefers-color-scheme: light) {
+  body {
+    background: var(--theme-color-light);
+  }
+}
+
+.clock {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  justify-content: space-between;
+  gap: var(--space);
+}
+.row {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  flex-grow: 1;
+  gap: var(--space);
+}
+.row > div {
+  flex-grow: 1;
+  /* Keep border inside so it doesn't cause vertical scrolling of a single pixel */
+  box-sizing: content-box;
+  &:not(.second) {
+    border-radius: var(--space);
+  }
+}
+@media (prefers-contrast: more) and (prefers-color-scheme: dark) {
+  .row > div {
+    border: 1pt solid var(--theme-color-dark);
+  }
+}
+@media (prefers-contrast: more) and (prefers-color-scheme: light) {
+  .row > div {
+    border: 1pt solid var(--theme-color-light);
+  }
+}
+.row-seconds {
+  justify-content: center;
+}
+.row > div.second {
+  aspect-ratio: 1;
+  height: 100%;
+  flex-grow: initial;
+  border-radius: 50%;
+}
+.row > div.second.on {
+  background: linear-gradient(79deg, #ffd047, #feb530);
+}
+.row-five-hours,
+.row-one-hours {
+  & > div.on {
+    background: linear-gradient(79deg, #ff4747, #fe3030);
+  }
+}
+.row-five-minutes,
+.row-one-minutes {
+  & > div.on {
+    background: linear-gradient(79deg, #ffd047, #feb530);
+  }
+}
+.row-five-minutes > div.on:nth-of-type(4n) {
+  background: linear-gradient(79deg, #ff4747, #fe3030);
+}
