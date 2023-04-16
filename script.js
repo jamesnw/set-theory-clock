@@ -57,14 +57,44 @@
             else light.classList.remove('on')
         })
     }
+    /**
+     *  @param {Date} date
+     */
+    function currentTime(date){
+        return date.toLocaleTimeString('en-us', {hour12: false});
+    }
+    /**
+     *  @param {string} time
+     */
+    function updateTime(time){
+        const timeSpan = document.getElementById('time');
+        timeSpan.innerText = time;
+    }
+    let lastUpdatedTime;
     function redraw() {
         const date = new Date();
+        const newTime = currentTime(date);
+
+        // Since we're checking for updates 60 times per second, only make changes if things have changed 
+        if(newTime == lastUpdatedTime) return;
+        lastUpdatedTime = newTime;
+
         const statesForTime = getStatesForTime(date);
 
         const lights = getLights();
         updateLights(lights, statesForTime);
+        updateTime(lastUpdatedTime);
     }
 
     redraw();
     setInterval(redraw, 1000/60);
+})();
+(function(){
+    const checkbox = document.querySelector('#help input[type="checkbox"]');
+    checkbox.addEventListener('change', ({currentTarget})=>{
+        const [oldVal, newVal] = currentTarget.checked ? ['help-off','help-on'] : ['help-on', 'help-off']
+       document.body.classList.remove(oldVal);
+       document.body.classList.add(newVal);
+       
+    })
 })();

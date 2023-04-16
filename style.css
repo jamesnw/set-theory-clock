@@ -80,27 +80,46 @@ body {
 .row-five-minutes > div.on:nth-of-type(4n) {
   background: linear-gradient(79deg, #ff4747, #fe3030);
 }
-.row::after{
-    display: block;
+.row::after {
+  display: block;
+  position: absolute;
+  top: 0px;
+  right: 0.5em;
+  font-size: 24px;
+  opacity: 0;
+  transition: ease-in-out 0.1s all;
+}
+.row:hover::after,
+.help-on .row::after,
+.help-on #time {
+  opacity: 1;
+}
+.row-one-hours::after {
+  content: "Each block is one hour";
+}
+.row-five-hours::after {
+  content: "Each block is five hours";
+}
+.row-one-minutes::after {
+  content: "Each block is one minute";
+}
+.row-five-minutes::after {
+  content: "Each block is five minutes";
+}
+#help {
+  position: absolute;
+  top: 0;
+  right: 0;
+  & input[type="checkbox"]{
+    accent-color: #ffd047;
+  }
+}
+
+#time{
+    text-align: center;
     position: absolute;
-    top: 0px;
-    right: .5em;
-    font-size: 24px;
+    top: 0;
+    font-size: 2em;
     opacity: 0;
-    transition: ease-in-out .1s all;
-}
-.row:hover::after{
-    opacity: 1;
-}
-.row-one-hours::after{
-    content: "Each block is one hour";
-}
-.row-five-hours::after{
-    content: "Each block is five hours";
-}
-.row-one-minutes::after{
-    content: "Each block is one minute";
-}
-.row-five-minutes::after{
-    content: "Each block is five minutes";
+    transition: ease-in-out 0.1s opacity;
 }
