@@ -90,8 +90,8 @@ body {
   transition: ease-in-out 0.1s all;
 }
 .row:hover::after,
-.help-on .row::after,
-.help-on #time {
+body:has(#help-enabled:checked) .row::after,
+body:has(#help-enabled:checked) #time {
   opacity: 1;
 }
 .row-one-hours::after {

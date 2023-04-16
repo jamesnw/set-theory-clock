@@ -89,12 +89,3 @@
     redraw();
     setInterval(redraw, 1000/60);
 })();
-(function(){
-    const checkbox = document.querySelector('#help input[type="checkbox"]');
-    checkbox.addEventListener('change', ({currentTarget})=>{
-        const [oldVal, newVal] = currentTarget.checked ? ['help-off','help-on'] : ['help-on', 'help-off']
-       document.body.classList.remove(oldVal);
-       document.body.classList.add(newVal);
-       
-    })
-})();
