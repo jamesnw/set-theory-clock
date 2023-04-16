@@ -71,8 +71,10 @@
         timeSpan.innerText = time;
     }
     let lastUpdatedTime;
+    let overrideTime;
     function redraw() {
         const date = new Date();
+        if(overrideTime) date.setSeconds(overrideTime);
         const newTime = currentTime(date);
 
         // Since we're checking for updates 60 times per second, only make changes if things have changed 
@@ -88,4 +90,13 @@
 
     redraw();
     setInterval(redraw, 1000/60);
+
+    const timeInput =  /** @type {HTMLInputElement}  */ (document.querySelector('#time-input'));
+    timeInput.addEventListener('input', ({currentTarget})=>{
+        overrideTime = currentTarget.valueAsNumber;
+    })
+    const timeOverrideClear =  /** @type {HTMLButtonElement}  */ (document.querySelector('#time-overide-clear'));
+    timeOverrideClear.addEventListener('click', ()=>{
+        overrideTime = undefined;
+    })
 })();

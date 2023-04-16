@@ -2,6 +2,10 @@
   --space: 1em;
   --theme-color-light: #e2e3e7;
   --theme-color-dark: #343538;
+  --red-light: #ff4747;
+  --red-dark: #fe3030;
+  --orange-light: #ffd047;
+  --orange-dark: #feb530;
 }
 body {
   height: 100svh;
@@ -24,7 +28,6 @@ body {
   flex-direction: column;
   height: 100%;
   width: 100%;
-  justify-content: space-between;
   gap: var(--space);
 }
 .row {
@@ -65,22 +68,22 @@ body {
   border-radius: 50%;
 }
 .row > div.second {
-  background: linear-gradient(79deg, #ffd047, #feb530);
+  background: linear-gradient(79deg, var(--orange-light), var(--orange-dark));
 }
 .row-five-hours,
 .row-one-hours {
   & > div {
-    background: linear-gradient(79deg, #ff4747, #fe3030);
+    background: linear-gradient(79deg, var(--red-light), var(--red-dark));
   }
 }
 .row-five-minutes,
 .row-one-minutes {
   & > div {
-    background: linear-gradient(79deg, #ffd047, #feb530);
+    background: linear-gradient(79deg, var(--orange-light), var(--orange-dark));
   }
 }
 .row-five-minutes > div.on:nth-of-type(4n) {
-  background: linear-gradient(79deg, #ff4747, #fe3030);
+  background: linear-gradient(79deg, var(--red-light), var(--red-dark));
 }
 .row::after {
   display: block;
@@ -113,12 +116,30 @@ body:has(#help-enabled:checked) #time,
   position: absolute;
   top: 0;
   right: 0;
+  text-align: right;
   background: rgb(255 255 255 / 28%);
   border-bottom-left-radius: 2pt;
-  padding-right: 5pt;
-  & input[type="checkbox"] {
-    accent-color: #ffd047;
+  padding: 5pt;
+  & input {
+    accent-color: var(--orange-light);
   }
+}
+#time-override{
+    display: none;
+}
+body:has(#help-enabled:checked) #time-override{
+    display: block;
+}
+#time-overide-clear{
+    display: block;
+    width: 100%;
+    border: 0;
+    background: var(--red-light);
+    color: white;
+    cursor: pointer;
+    &:hover{
+        background-color: var(--red-dark);
+    }
 }
 
 #time {
