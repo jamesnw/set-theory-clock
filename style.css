@@ -1,5 +1,5 @@
 :root {
-  --space: 0;
+  --space: 1em;
   --theme-color-light: #e2e3e7;
   --theme-color-dark: #343538;
 }
