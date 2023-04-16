@@ -110,16 +110,33 @@ body:has(#help-enabled:checked) #time {
   position: absolute;
   top: 0;
   right: 0;
-  & input[type="checkbox"]{
+  & input[type="checkbox"] {
     accent-color: #ffd047;
   }
 }
 
-#time{
-    text-align: center;
+#time {
+  text-align: center;
+  position: absolute;
+  top: 0;
+  font-size: 2em;
+  opacity: 0;
+  transition: ease-in-out 0.1s opacity;
+}
+#unsupported{
     position: absolute;
     top: 0;
-    font-size: 2em;
-    opacity: 0;
-    transition: ease-in-out 0.1s opacity;
+    left: 0;
+    width: 100vw;
+    height: 100svh;
+    background-color: var(--theme-color-light);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: var(--theme-color-dark)
+}
+@supports (selector(&)) {
+  #unsupported {
+    display: none;
+  }
 }
