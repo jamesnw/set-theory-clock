@@ -39,6 +39,8 @@ body {
   flex-grow: 1;
   /* Keep border inside so it doesn't cause vertical scrolling of a single pixel */
   box-sizing: content-box;
+  opacity: 0;
+  transition: ease-in-out .1s opacity;
   &:not(.second) {
     border-radius: var(--space);
   }
@@ -62,18 +64,18 @@ body {
   flex-grow: initial;
   border-radius: 50%;
 }
-.row > div.second.on {
+.row > div.second {
   background: linear-gradient(79deg, #ffd047, #feb530);
 }
 .row-five-hours,
 .row-one-hours {
-  & > div.on {
+  & > div {
     background: linear-gradient(79deg, #ff4747, #fe3030);
   }
 }
 .row-five-minutes,
 .row-one-minutes {
-  & > div.on {
+  & > div {
     background: linear-gradient(79deg, #ffd047, #feb530);
   }
 }
@@ -91,7 +93,8 @@ body {
 }
 .row:hover::after,
 body:has(#help-enabled:checked) .row::after,
-body:has(#help-enabled:checked) #time {
+body:has(#help-enabled:checked) #time,
+.row > div.on {
   opacity: 1;
 }
 .row-one-hours::after {
@@ -110,6 +113,9 @@ body:has(#help-enabled:checked) #time {
   position: absolute;
   top: 0;
   right: 0;
+  background: rgb(255 255 255 / 28%);
+  border-bottom-left-radius: 2pt;
+  padding-right: 5pt;
   & input[type="checkbox"] {
     accent-color: #ffd047;
   }
