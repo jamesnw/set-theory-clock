@@ -8,10 +8,14 @@ body {
   width: 100vw;
   margin: 0;
   background: var(--theme-color-dark);
+  color: var(--theme-color-light);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 @media (prefers-color-scheme: light) {
   body {
     background: var(--theme-color-light);
+    color: var(--theme-color-dark);
   }
 }
 
@@ -29,6 +33,7 @@ body {
   flex-direction: row;
   flex-grow: 1;
   gap: var(--space);
+  position: relative;
 }
 .row > div {
   flex-grow: 1;
@@ -74,4 +79,28 @@ body {
 }
 .row-five-minutes > div.on:nth-of-type(4n) {
   background: linear-gradient(79deg, #ff4747, #fe3030);
+}
+.row::after{
+    display: block;
+    position: absolute;
+    top: 0px;
+    right: .5em;
+    font-size: 24px;
+    opacity: 0;
+    transition: ease-in-out .1s all;
+}
+.row:hover::after{
+    opacity: 1;
+}
+.row-one-hours::after{
+    content: "Each block is one hour";
+}
+.row-five-hours::after{
+    content: "Each block is five hours";
+}
+.row-one-minutes::after{
+    content: "Each block is one minute";
+}
+.row-five-minutes::after{
+    content: "Each block is five minutes";
 }
