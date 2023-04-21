@@ -43,7 +43,7 @@ body {
   /* Keep border inside so it doesn't cause vertical scrolling of a single pixel */
   box-sizing: content-box;
   opacity: 0;
-  transition: ease-in-out .1s opacity;
+  transition: ease-in-out 0.1s opacity;
   &:not(.second) {
     border-radius: var(--space);
   }
@@ -124,22 +124,22 @@ body:has(#help-enabled:checked) #time,
     accent-color: var(--orange-light);
   }
 }
-#time-override{
-    display: none;
+#time-override {
+  display: none;
 }
-body:has(#help-enabled:checked) #time-override{
-    display: block;
+body:has(#help-enabled:checked) #time-override {
+  display: block;
 }
-#time-overide-clear{
-    display: block;
-    width: 100%;
-    border: 0;
-    background: var(--red-light);
-    color: white;
-    cursor: pointer;
-    &:hover{
-        background-color: var(--red-dark);
-    }
+#time-overide-clear {
+  display: block;
+  width: 100%;
+  border: 0;
+  background: var(--red-light);
+  color: white;
+  cursor: pointer;
+  &:hover {
+    background-color: var(--red-dark);
+  }
 }
 
 #time {
@@ -150,20 +150,21 @@ body:has(#help-enabled:checked) #time-override{
   opacity: 0;
   transition: ease-in-out 0.1s opacity;
 }
-#unsupported{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100svh;
-    background-color: var(--theme-color-light);
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    color: var(--theme-color-dark)
+#unsupported {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100svh;
+  background-color: var(--theme-color-light);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: var(--theme-color-dark);
+  display: none;
 }
-@supports (selector(&)) {
+@supports not (selector(&)) {
   #unsupported {
-    display: none;
+    display: flex;
   }
 }
