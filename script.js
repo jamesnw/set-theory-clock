@@ -90,13 +90,4 @@
 
     redraw();
     setInterval(redraw, 1000/60);
-
-    const timeInput =  /** @type {HTMLInputElement}  */ (document.querySelector('#time-input'));
-    timeInput.addEventListener('input', ({currentTarget})=>{
-        overrideTime = currentTarget.valueAsNumber;
-    })
-    const timeOverrideClear =  /** @type {HTMLButtonElement}  */ (document.querySelector('#time-overide-clear'));
-    timeOverrideClear.addEventListener('click', ()=>{
-        overrideTime = undefined;
-    })
 })();
